@@ -1,8 +1,11 @@
+/* --- 놀이공원 테마 --- */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
 /* 기본 스타일 */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #f4f7f6;
+    /* 1. 놀이공원 하늘 같은 그라데이션 배경 */
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
     color: #333;
     display: flex;
     justify-content: center;
@@ -16,12 +19,14 @@ body {
 #app-container {
     width: 100%;
     max-width: 500px;
-    margin: auto;
+    margin: 20px;
     background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    /* 2. 입체적인 그림자 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     position: relative;
+    border: 4px solid #fff;
 }
 
 /* 화면 전환 */
@@ -48,81 +53,128 @@ body {
     z-index: 100;
 }
 .common-buttons button {
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid #ddd;
-    backdrop-filter: blur(5px);
+    /* 3. 팝콘 같은 노란색 버튼 */
+    background: #f1c40f;
+    border: 2px solid #f39c12;
     border-radius: 20px;
-    padding: 8px 12px;
+    padding: 8px 14px;
     font-size: 13px;
     cursor: pointer;
     margin-left: 5px;
+    font-weight: 700;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
 }
 .common-buttons button:hover {
-    background: #f0f0f0;
+    background: #f39c12;
+    transform: translateY(-2px);
 }
 
 /* 홈 화면 */
 #screen-home h1 {
-    font-size: 2.5rem;
-    color: #4a90e2;
+    font-size: 2.8rem;
+    /* 4. 놀이기구 같은 빨간색 제목 */
+    color: #e74c3c;
     line-height: 1.3;
+    font-weight: 800;
+    /* 5. 텍스트 그림자 */
+    text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.8);
 }
 
 /* 버튼 스타일 */
 button {
-    font-size: 16px;
-    padding: 12px 20px;
+    font-size: 18px;
+    padding: 14px 22px;
     border: none;
-    border-radius: 8px;
+    /* 6. 알약 모양의 재미있는 버튼 */
+    border-radius: 30px;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 700;
     transition: all 0.2s ease;
     margin-top: 10px;
+    /* 7. 버튼 그림자 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
+/* 8. 메인 버튼 (빨간색) */
 .btn-main {
-    background-color: #4a90e2;
+    background-color: #e74c3c;
     color: white;
     width: 80%;
+    border-bottom: 4px solid #c0392b;
 }
 .btn-main:hover {
-    background-color: #357abd;
+    background-color: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
+.btn-main:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+/* 9. 서브 버튼 (노란색) */
 .btn-sub {
-    background-color: #f0f0f0;
-    color: #555;
+    background-color: #f1c40f;
+    color: #333;
     width: 80%;
+    border-bottom: 4px solid #f39c12;
 }
 .btn-sub:hover {
-    background-color: #e0e0e0;
+    background-color: #f39c12;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
+.btn-sub:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
 
 /* 게임 화면 */
 #question-counter {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #555;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2c3e50;
+    background: #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 .image-container {
     width: 100%;
     max-width: 400px;
     margin: 20px 0;
+    /* 10. 사진 프레임 (게임 부스 느낌) */
+    border: 6px solid #e74c3c;
+    padding: 6px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 #game-image {
     width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    display: block;
 }
 #question-input {
     width: 90%;
     height: 100px;
     font-size: 1rem;
     padding: 15px;
-    border: 1px solid #ddd;
+    border: 3px solid #ddd;
     border-radius: 8px;
     resize: none;
     margin-bottom: 15px;
-    font-family: inherit;
+    font-family: 'Nunito', sans-serif;
 }
+#question-input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+}
+
 .button-group {
     display: flex;
     justify-content: space-around;
@@ -135,8 +187,8 @@ button {
 
 /* 결과 화면 */
 .result-summary {
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
+    background-color: #fdfaf3;
+    border: 3px solid #f39c12;
     border-radius: 8px;
     padding: 20px;
     margin: 20px 0;
@@ -148,14 +200,18 @@ button {
     line-height: 1.6;
 }
 .result-summary #total-score {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #4a90e2;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #e74c3c; /* 빨간색 점수 */
+}
+#analysis-text {
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 #analysis-tip {
     font-weight: 600;
     margin-top: 15px;
-    color: #2a6ead;
+    color: #c0392b; /* 진한 빨간색 */
 }
 
 /* 내 질문 목록 */
@@ -172,14 +228,16 @@ button {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.2s;
+    border: 2px solid #eee;
 }
 #question-list li:hover {
-    background-color: #f0f0f0;
+    background-color: #fff8e7;
+    border-color: #f39c12;
 }
 #question-list li .score-preview {
     float: right;
     font-weight: bold;
-    color: #4a90e2;
+    color: #e74c3c;
 }
 
 /* 팝업 (모달) 스타일 */
@@ -207,6 +265,8 @@ button {
     max-width: 450px;
     position: relative;
     animation: slide-down 0.3s ease-out;
+    /* 11. 티켓 같은 점선 테두리 */
+    border: 4px dashed #e74c3c;
 }
 @keyframes slide-down {
     from {
@@ -220,9 +280,9 @@ button {
 }
 .close-btn {
     position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 28px;
+    top: 10px;
+    right: 15px;
+    font-size: 32px;
     font-weight: bold;
     color: #aaa;
     cursor: pointer;
@@ -232,7 +292,8 @@ button {
 }
 .modal-content h2 {
     margin-top: 0;
-    color: #4a90e2;
+    color: #e74c3c; /* 빨간색 제목 */
+    text-align: center;
 }
 .modal-content ol, .modal-content ul {
     text-align: left;
@@ -243,10 +304,11 @@ button {
     padding-left: 10px;
 }
 #btn-alert-confirm {
-    background-color: #4a90e2;
+    background-color: #e74c3c; /* 빨간색 */
     color: white;
     width: 100%;
     margin-top: 20px;
+    border-bottom: 4px solid #c0392b;
 }
 
 /* 질문 상세 팝업 */
@@ -254,21 +316,24 @@ button {
     width: 100%;
     border-radius: 8px;
     margin-bottom: 15px;
+    border: 4px solid #eee;
 }
 #detail-evaluation {
-    background: #f9f9f9;
+    background: #fff8e7;
     padding: 10px;
     border-radius: 5px;
     font-style: italic;
+    border: 1px solid #f39c12;
 }
 
 /* 즉시 피드백 팝업 스타일 */
 #modal-feedback .modal-content {
     text-align: left;
+    border-color: #3498db; /* 파란색 점선 */
 }
 #modal-feedback h3 {
     text-align: center;
-    color: #4a90e2;
+    color: #3498db; /* 파란색 제목 */
     margin-top: 0;
     font-size: 1.5rem;
 }
@@ -278,8 +343,8 @@ button {
 }
 #feedback-score {
     font-size: 1.8rem;
-    font-weight: bold;
-    color: #4a90e2;
+    font-weight: 800;
+    color: #e74c3c; /* 빨간색 점수 */
 }
 #feedback-evaluation {
     background: #f9f9f9;
@@ -291,4 +356,9 @@ button {
 #btn-next-question {
     width: 100%;
     margin-top: 20px;
+    background-color: #3498db; /* 파란색 버튼 */
+    border-bottom: 4px solid #2980b9;
+}
+#btn-next-question:hover {
+    background-color: #2980b9;
 }
