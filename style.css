@@ -1,0 +1,294 @@
+/* 기본 스타일 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#app-container {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+}
+
+/* 화면 전환 */
+.screen {
+    display: none;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    width: 100%;
+    min-height: 500px;
+}
+.screen.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 공통 버튼 (게임 중) */
+.common-buttons {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 100;
+}
+.common-buttons button {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ddd;
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    padding: 8px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+.common-buttons button:hover {
+    background: #f0f0f0;
+}
+
+/* 홈 화면 */
+#screen-home h1 {
+    font-size: 2.5rem;
+    color: #4a90e2;
+    line-height: 1.3;
+}
+
+/* 버튼 스타일 */
+button {
+    font-size: 16px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    margin-top: 10px;
+}
+.btn-main {
+    background-color: #4a90e2;
+    color: white;
+    width: 80%;
+}
+.btn-main:hover {
+    background-color: #357abd;
+}
+.btn-sub {
+    background-color: #f0f0f0;
+    color: #555;
+    width: 80%;
+}
+.btn-sub:hover {
+    background-color: #e0e0e0;
+}
+
+/* 게임 화면 */
+#question-counter {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #555;
+}
+.image-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px 0;
+}
+#game-image {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+#question-input {
+    width: 90%;
+    height: 100px;
+    font-size: 1rem;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    resize: none;
+    margin-bottom: 15px;
+    font-family: inherit;
+}
+.button-group {
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+}
+.button-group .btn-sub,
+.button-group .btn-main {
+    width: 48%;
+}
+
+/* 결과 화면 */
+.result-summary {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: left;
+    width: 90%;
+}
+.result-summary p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+.result-summary #total-score {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4a90e2;
+}
+#analysis-tip {
+    font-weight: 600;
+    margin-top: 15px;
+    color: #2a6ead;
+}
+
+/* 내 질문 목록 */
+#question-list {
+    list-style: none;
+    padding: 0;
+    width: 90%;
+    text-align: left;
+}
+#question-list li {
+    background: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+#question-list li:hover {
+    background-color: #f0f0f0;
+}
+#question-list li .score-preview {
+    float: right;
+    font-weight: bold;
+    color: #4a90e2;
+}
+
+/* 팝업 (모달) 스타일 */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    justify-content: center;
+    align-items: center;
+}
+.modal.active {
+    display: flex;
+}
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 450px;
+    position: relative;
+    animation: slide-down 0.3s ease-out;
+}
+@keyframes slide-down {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+.close-btn:hover {
+    color: #333;
+}
+.modal-content h2 {
+    margin-top: 0;
+    color: #4a90e2;
+}
+.modal-content ol, .modal-content ul {
+    text-align: left;
+    line-height: 1.6;
+}
+.modal-content ul {
+    list-style-type: none;
+    padding-left: 10px;
+}
+#btn-alert-confirm {
+    background-color: #4a90e2;
+    color: white;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* 질문 상세 팝업 */
+#detail-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+#detail-evaluation {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    font-style: italic;
+}
+
+/* 즉시 피드백 팝업 스타일 */
+#modal-feedback .modal-content {
+    text-align: left;
+}
+#modal-feedback h3 {
+    text-align: center;
+    color: #4a90e2;
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+#feedback-question {
+    font-style: italic;
+    font-weight: 500;
+}
+#feedback-score {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #4a90e2;
+}
+#feedback-evaluation {
+    background: #f9f9f9;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-top: 5px;
+    line-height: 1.6;
+}
+#btn-next-question {
+    width: 100%;
+    margin-top: 20px;
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생각이 자라나는 질문 놀이터</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="common-buttons" style="display: none;">
+        <button id="btn-common-rules">게임 방법</button>
+        <button id="btn-common-quit">종료하기</button>
+    </div>
+
+    <div id="screen-home" class="screen active">
+        <h1>생각이 자라나는<br>질문 놀이터 🧐</h1>
+        <button id="btn-start" class="btn-main">시작하기</button>
+        <button id="btn-rules-home" class="btn-sub">게임 방법</button>
+        <button id="btn-quit-home" class="btn-sub">종료하기</button>
+    </div>
+
+    <div id="screen-game" class="screen">
+        <h2 id="question-counter">첫 번째 사진 (1/10)</h2>
+        <div class="image-container">
+            <img id="game-image" src="" alt="일상 사진">
+        </div>
+        <textarea id="question-input" placeholder="사진을 보고 떠오르는 질문을 적어보세요..."></textarea>
+        <div class="button-group">
+            <button id="btn-hint" class="btn-sub">💡 힌트 보기</button>
+            <button id="btn-submit" class="btn-main">질문 등록하기</button>
+        </div>
+    </div>
+
+    <div id="screen-result" class="screen">
+        <h2>🎉 질문 분석 결과!</h2>
+        <div class="result-summary">
+            <p>총 점수: <span id="total-score">0</span> / 10000점</p>
+            <div id="analysis-animal-result">
+                <p id="analysis-text">분석 중...</p>
+                <p id="analysis-tip">팁 로딩 중...</p>
+            </div>
+        </div>
+        <button id="btn-view-my-questions" class="btn-main">내 질문 확인하기</button>
+        <button id="btn-restart" class="btn-sub">다시 하기</button>
+        <button id="btn-back-home" class="btn-sub">처음으로</button>
+    </div>
+
+    <div id="screen-my-questions" class="screen">
+        <h2>내가 만든 질문 목록</h2>
+        <ul id="question-list">
+            </ul>
+        <button id="btn-back-to-result" class="btn-main">결과 화면으로 가기</button>
+    </div>
+
+    <div id="modal-rules" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-rules">&times;</span>
+            <h2>게임 방법</h2>
+            <ol>
+                <li>사진을 보고 질문을 만들어요. (총 10문제!)</li>
+                <li>질문을 등록하면 **바로 점수와 피드백**이 나와요.</li>
+                <li>[힌트] 버튼을 누르면 좋은 질문 팁을 볼 수 있어요.</li>
+                <li><strong>좋은 질문은 점수가 높아요! (최대 1000점)</strong>
+                    <ul>
+                        <li>👍 **높은 점수:**
+                            <ul>
+                                <li>"만약~?", "왜~?", "나라면~?" 같은 깊은 생각 질문</li>
+                                <li>나의 경험이나 생각을 **길게(50자 이상)** 쓴 성의 있는 질문</li>
+                            </ul>
+                        </li>
+                        <li>👎 **낮은 점수:**
+                            <ul>
+                                <li>"누가?", "몇 개?" 같은 단순 관찰 질문</li>
+                                <li>"이게 뭐야?" 처럼 **너무 짧은(7자 미만)** 질문</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>이런 질문은 0점이에요! (수정 기회 1번 줌)</strong>
+                    <ul>
+                        <li>욕설, 비속어, 성의 없는 표현 (예: ㅋㅋ, 123, 몰루?)</li>
+                        <li>오탈자 (예: 않되, 어떻해)</li>
+                        <li>질문 형식이 아닌 말 (예: ~까?, ~요? 로 끝나지 않음)</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <div id="modal-hint" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-hint">&times;</span>
+            <h2>💡 좋은 질문 팁!</h2>
+            <p id="hint-text">힌트가 여기에 나옵니다.</p>
+        </div>
+    </div>
+
+    <div id="modal-alert" class="modal">
+        <div class="modal-content">
+            <p id="alert-message">알림 메시지</p>
+            <button id="btn-alert-confirm">확인</button>
+        </div>
+    </div>
+
+    <div id="modal-feedback" class="modal">
+        <div class="modal-content">
+            <h3>질문 결과</h3>
+            <p><strong>내 질문:</strong> <span id="feedback-question"></span></p>
+            <p><strong>점수:</strong> <span id="feedback-score" class="score-preview"></span></p>
+            <p><strong>피드백:</strong></p>
+            <p id="feedback-evaluation"></p>
+            <button id="btn-next-question" class="btn-main">다음 문제</button>
+        </div>
+    </div>
+
+    <div id="modal-question-detail" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-detail">&times;</span>
+            <img id="detail-image" src="" alt="질문 사진">
+            <p><strong>내가 만든 질문:</strong></p>
+            <p id="detail-question-text"></p>
+            <p><strong>받은 점수:</strong> <span id="detail-score">0</span>점</p>
+            <p><strong>평가:</strong></p>
+            <p id="detail-evaluation"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
